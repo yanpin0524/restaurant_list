@@ -16,7 +16,7 @@
 3. 使用者可以點擊餐廳的地址，連結到google地圖
 4. 使用者可以依照餐廳名稱與餐廳類別進行搜尋
 
-## 環境建置
+## 開發工具
 
 1. Node.js 17.5.0
 2. Nodemon 2.0.15
@@ -25,7 +25,7 @@
 5. Bootstrap 5.1.3
 6. Font Awesome 5.0.9
 
-## Installing - 專案安裝流程
+## 專案安裝流程
 
 1. 安裝 Node.js 與 npm
 2. 打開你的終端機，將此專案 Clone 到本地
@@ -46,5 +46,5 @@ http:/localhost:3000
 ```
 6. 要結束運行請按下 ctrl + c
 
-## Contributor - 專案開發人員
+## 專案開發人員
 > [yanpin0524](https://github.com/yanpin0524)
