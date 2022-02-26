@@ -7,8 +7,19 @@ const restaurant_list = require('./restaurant.json')
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
+app.use(express.static('public'))
+
 app.get('/', (req, res) => {
-  res.send('<h1> This is a web app for express. </h1>')
+  res.render('index', { restaurants: restaurant_list.results })
+})
+
+app.get('/restaurants/:restaurants_id', (req, res) => {
+  const id = req.params.restaurants_id
+  const item = restaurant_list.results.find((item) => {
+    return id === item.id.toString()
+  })
+
+  res.render('show', { restaurant: item })
 })
 
 app.listen(port, () => {
