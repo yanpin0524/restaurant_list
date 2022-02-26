@@ -1,92 +1,50 @@
+## 介紹
+紀錄屬於自己的餐廳清單，可以瀏覽餐廳、查看詳細資訊、甚至連結到地圖。
+
 ## 專案畫面
 
-![image](https://github.com/pierceshih15/restaurantList/blob/master/public/img/homePage.png)
+![image](https://github.com/yanpin0524/restaurant_list/blob/master/專案圖片/Opera%20快照_2022-02-27.png)
 
-![image](https://github.com/pierceshih15/restaurantList/blob/master/public/img/restaurantInfo.png)
+![image](https://github.com/yanpin0524/restaurant_list/blob/master/專案圖片/Opera%20快照_2022-02-27_002027_localhost.png)
 
-![image](https://github.com/pierceshih15/restaurantList/blob/master/public/img/addNewRestaurant.png)
+![image](https://github.com/yanpin0524/restaurant_list/blob/master/專案圖片/Opera%20快照_2022-02-27_002049_localhost.png)
 
-![image](https://github.com/pierceshih15/restaurantList/blob/master/public/img/loginPage.png)
+## 產品功能
 
-## Features - 產品功能
-
-1. 使用者可以藉由第三方快速註冊登入(Facebook, Google)
+1. 使用者可以瀏覽全部所有餐廳
 2. 使用者可以點擊任一餐廳，查看更多餐廳資訊，如地址、電話與簡介
-3. 使用者可以依照中文名稱、英文名稱與餐廳類別進行搜尋
-4. 使用者可以新增一家餐廳
-5. 使用者可以瀏覽一家餐廳的詳細資訊
-6. 使用者可以瀏覽全部所有餐廳
-7. 使用者可以修改一家餐廳的資訊
-8. 使用者可以刪除一家餐廳
+3. 使用者可以點擊餐廳的地址，連結到google地圖
+4. 使用者可以依照餐廳名稱與餐廳類別進行搜尋
 
-## Environment SetUp - 環境建置
+## 環境建置
 
-1. [MongoDB v4.0 以上](https://www.mongodb.com/download-center/community)
-2. [Node.js](https://nodejs.org/en/)
+1. Node.js 17.5.0
+2. Nodemon 2.0.15
+3. Express 4.17.3
+4. Express-handlebars 3.0.0
+5. Bootstrap 5.1.3
+6. Font Awesome 5.0.9
 
 ## Installing - 專案安裝流程
 
-1. 打開你的 terminal，Clone 此專案至本機電腦
-
+1. 安裝 Node.js 與 npm
+2. 打開你的終端機，將此專案 Clone 到本地
 ```
-git clone https://github.com/pierceshih15/restaurantList.git
+git clone https://github.com/yanpin0524/restaurant_list.git
 ```
-
-2. 開啟終端機(Terminal)，進入存放此專案的資料夾
-
+3. 之後進入專案資料夾，輸入
 ```
-cd restaurantList
+npm install
 ```
-
-3. 安裝 npm 套件
-
+4. 安裝完畢後，輸入以下內容 來開始運行
 ```
-在 Terminal 輸入 npm install 指令
+npm run start
 ```
-
-4. 安裝 nodemon 套件
-
+5. 若是跑出網址代表成功運行，請進入瀏覽器並輸入網址
 ```
-在 Terminal 輸入 nodemon app.js 指令
+http:/localhost:3000
 ```
-
-5. 匯入種子檔案
-
-```
-在 Terminal 找到 Seeder.js 檔案
-
-執行 node models/seeds/Seeder.js 匯入使用者與餐廳資料
-```
-
-當 terminal 出現以下字樣，即表示種子資料已新增至資料庫，按下 ctrl + c 結束執行
-
-```
-Mongodb is connected!
-
-User and Restaurant data get done!
-```
-
-6. 啟動伺服器，執行 app.js 檔案
-
-```
-nodemon app.js
-```
-
-7. 當 terminal 出現以下字樣，表示伺服器與資料庫已啟動並成功連結
-
-```
-The Express server is running on http://localhost:3000
-
-Mongodb is connected!
-```
-
-現在，你可開啟任一瀏覽器瀏覽器輸入 [http://localhost:3000](http://localhost:3000) 開始使用皮皮美食網囉！歡迎使用官方測試帳號操作。
-
-```
-帳號：pierce@gmail.com
-密碼：1234
-```
+6. 要結束運行請按下 ctrl + c
 
 ## Contributor - 專案開發人員
-
-> [Pierce Shih](https://github.com/pierceshih15)
+> [yanpin0524](https://github.com/yanpin0524)
