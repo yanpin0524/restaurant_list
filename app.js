@@ -13,6 +13,15 @@ app.get('/', (req, res) => {
   res.render('index', { restaurants: restaurant_list.results })
 })
 
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  const search = restaurant_list.results.filter((item) => {
+    return item.name.toLowerCase().includes(keyword) || item.category.toLowerCase().includes(keyword)
+  })
+
+  res.render('index', { restaurants: search, keyword: keyword })
+})
+
 app.get('/restaurants/:restaurants_id', (req, res) => {
   const id = req.params.restaurants_id
   const item = restaurant_list.results.find((item) => {
