@@ -31,6 +31,10 @@ app.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
+app.get('/add',(req, res) => {
+  return res.render('add')
+})
+
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
   const search = restaurant_list.results.filter((item) => {
