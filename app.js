@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars')
+const mongoose = require('mongoose')
 const port = 3000
 const restaurant_list = require('./restaurant.json')
 
@@ -8,6 +9,17 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
+mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
+
+const db = mongoose.connection
+
+db.on('error', () => {
+  console.log('連線錯誤!!')
+})
+
+db.once('open', () => {
+  console.log('連線成功')
+})
 
 app.get('/', (req, res) => {
   res.render('index', { restaurants: restaurant_list.results })
