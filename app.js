@@ -3,7 +3,7 @@ const app = express()
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const port = 3000
-const restaurant_list = require('./restaurant.json')
+const restaurant_list = require('./models/restaurant.json')
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
