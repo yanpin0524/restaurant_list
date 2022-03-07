@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.get('/add',(req, res) => {
+app.get('/restaurant/add', (req, res) => {
   return res.render('add')
 })
 
