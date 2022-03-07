@@ -32,4 +32,4 @@ const restaurantSchema = new Schema({
   }
 })
 
-module.exports = mongoose.model('Res', restaurantSchema)
+module.exports = mongoose.model('resItem', restaurantSchema)
