@@ -46,11 +46,19 @@ app.post('/restaurant', (req, res) => {
 // 查詢餐廳
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
-  const search = restaurant_list.results.filter((item) => {
-    return item.name.toLowerCase().includes(keyword) || item.category.toLowerCase().includes(keyword)
-  })
 
-  res.render('index', { restaurants: search, keyword: keyword })
+  if (!keyword) { res.redirect("/") }
+
+  return restaurant_list.find({})
+    .lean()
+    .then(all_data => {
+      const search = all_data.filter((item) => {
+        return item.name.toLowerCase().includes(keyword.toLowerCase()) || item.category.toLowerCase().includes(keyword.toLowerCase())
+      })
+
+      res.render('index', { restaurants: search, keyword })
+    })
+    .catch(error => console.log(error))
 })
 
 // 瀏覽詳細資訊
@@ -80,7 +88,7 @@ app.post('/restaurant/:restaurants_id/edit', (req, res) => {
 })
 
 // 刪除餐廳
-app.post('/restaurant/:restaurants_id/delete',(req, res) => {
+app.post('/restaurant/:restaurants_id/delete', (req, res) => {
   const id = req.params.restaurants_id
   return restaurant_list.findByIdAndDelete(id)
     .then(() => res.redirect('/'))
@@ -89,5 +97,5 @@ app.post('/restaurant/:restaurants_id/delete',(req, res) => {
 
 // 監聽伺服器
 app.listen(port, () => {
-  console.log(`http:/localhost:${port}`)
+  console.log(`網站已開啟：http:/localhost:${port}`)
 })

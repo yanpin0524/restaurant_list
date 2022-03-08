@@ -39,15 +39,18 @@ git clone https://github.com/yanpin0524/restaurant_list.git
 ```
 npm install
 ```
-4. 安裝完畢後，輸入以下內容 來開始運行
-```
-npm run start
-```
-5. 若是跑出 http:/localhost:3000 代表成功運行，請繼續輸入以下內容，以載入種子資料
+4. 安裝完畢後，輸入以下內容 載入種子資料
 ```
 npm run seed
 ```
-6. 現在可以輸入網址，並開始使用了
+5. 若是跑出 "種子資料 載入結束" 代表成功，請繼續輸入以下內容 開始運行網站
+```
+npm run start
+```
+6. 若是跑出 "網站已開啟：http:/localhost:3000" 代表成功，現在可以輸入網址，並開始使用了
+```
+http:/localhost:3000
+```
 7. 要結束運行請按下 ctrl + c
 
 ## 專案開發人員
