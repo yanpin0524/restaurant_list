@@ -31,11 +31,13 @@
 4. Express-handlebars 3.0.0
 5. Bootstrap 5.1.3
 6. Font Awesome 5.0.9
+7. MongoDB
+8. mongoose 5.9.7
 
 ## 專案安裝流程
 
-1. 安裝 Node.js 與 npm
-2. 打開你的終端機，將此專案 Clone 到本地
+1. 請先安裝 Node.js、npm 與 Mongodb
+2. 打開你的終端機，開啟資料庫，並將此專案 Clone 到本地
 ```
 git clone https://github.com/yanpin0524/restaurant_list.git
 ```
