@@ -35,6 +35,14 @@ app.get('/restaurant/add', (req, res) => {
   return res.render('add')
 })
 
+app.post('/restaurant', (req, res) => {
+  const addItems = req.body
+  console.log(addItems)
+  return restaurant_list.create(addItems)
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
   const search = restaurant_list.results.filter((item) => {
