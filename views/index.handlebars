@@ -40,7 +40,7 @@
       <div class="d-flex justify-content-end align-items-center pt-1 mb-2 border-top">
         <a class="btn btn-outline-secondary btn-sm me-2" href="/restaurant/{{ this._id }}">詳細</a>
         <a class="btn btn-outline-secondary btn-sm me-2" href="/restaurant/{{ this._id }}/edit">編輯</a>
-        <form class="me-3" action="" method="post">
+        <form class="me-3" action="/restaurant/{{ this._id }}/delete" method="post">
           <button class="btn btn-outline-danger btn-sm" type="submit">刪除</button>
         </form>
       </div>
