@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-const resItem = require('../restaurant')
-const restaurant_list = require('../restaurant.json')
+const Restaurants = require('../restaurant')
+const restaurantList = require('../restaurant.json')
 
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -13,8 +13,8 @@ db.on('error', () => {
 db.once('open', () => {
   console.log('連線成功')
 
-  restaurant_list.results.forEach((item) => {
-    resItem.create({
+  restaurantList.results.forEach((item) => {
+    Restaurants.create({
       name: item.name,
       name_en: item.name_en,
       category: item.category,

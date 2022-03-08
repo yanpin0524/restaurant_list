@@ -1,12 +1,12 @@
 const express = require('express')
 const app = express()
-const exphbs = require('express-handlebars')
+const expressHandlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const port = 3000
-const restaurant_list = require('./models/restaurant')
+const restaurantList = require('./models/restaurant')
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
@@ -25,10 +25,10 @@ db.once('open', () => {
 })
 
 app.get('/', (req, res) => {
-  restaurant_list.find()
+  restaurantList.find()
     .lean()
-    .then(item => res.render('index', { restaurants: item }))
-    .catch(error => console.log(error))
+    .then((item) => res.render('index', { restaurants: item }))
+    .catch((error) => console.log(error))
 })
 
 // 新增餐廳
@@ -38,61 +38,61 @@ app.get('/restaurant/add', (req, res) => {
 
 app.post('/restaurant', (req, res) => {
   const addItems = req.body
-  return restaurant_list.create(addItems)
+  return restaurantList.create(addItems)
     .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
+    .catch((error) => console.log(error))
 })
 
 // 查詢餐廳
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
 
-  if (!keyword) { res.redirect("/") }
+  if (!keyword) { res.redirect('/') }
 
-  return restaurant_list.find({})
+  return restaurantList.find({})
     .lean()
-    .then(all_data => {
-      const search = all_data.filter((item) => {
+    .then((allData) => {
+      const search = allData.filter((item) => {
         return item.name.toLowerCase().includes(keyword.toLowerCase()) || item.category.toLowerCase().includes(keyword.toLowerCase())
       })
 
       res.render('index', { restaurants: search, keyword })
     })
-    .catch(error => console.log(error))
+    .catch((error) => console.log(error))
 })
 
 // 瀏覽詳細資訊
 app.get('/restaurant/:restaurants_id', (req, res) => {
   const id = req.params.restaurants_id
-  return restaurant_list.findById(id)
+  return restaurantList.findById(id)
     .lean()
     .then((restaurant) => res.render('show', { restaurant }))
-    .catch(error => console.log(error))
+    .catch((error) => console.log(error))
 })
 
 // 編輯餐廳內容
 app.get('/restaurant/:restaurants_id/edit', (req, res) => {
   const id = req.params.restaurants_id
-  return restaurant_list.findById(id)
+  return restaurantList.findById(id)
     .lean()
     .then((restaurant) => res.render('edit', { restaurant }))
-    .catch(error => console.log(error))
+    .catch((error) => console.log(error))
 })
 
 app.post('/restaurant/:restaurants_id/edit', (req, res) => {
   const editItem = req.body
   const id = req.params.restaurants_id
-  return restaurant_list.findByIdAndUpdate(id, editItem)
+  return restaurantList.findByIdAndUpdate(id, editItem)
     .then(() => res.redirect(`/restaurant/${id}`))
-    .catch(error => console.log(error))
+    .catch((error) => console.log(error))
 })
 
 // 刪除餐廳
 app.post('/restaurant/:restaurants_id/delete', (req, res) => {
   const id = req.params.restaurants_id
-  return restaurant_list.findByIdAndDelete(id)
+  return restaurantList.findByIdAndDelete(id)
     .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
+    .catch((error) => console.log(error))
 })
 
 // 監聽伺服器
