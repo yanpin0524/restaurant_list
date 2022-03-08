@@ -31,18 +31,19 @@ app.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// 新增
 app.get('/restaurant/add', (req, res) => {
   return res.render('add')
 })
 
 app.post('/restaurant', (req, res) => {
   const addItems = req.body
-  console.log(addItems)
   return restaurant_list.create(addItems)
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
+// 查詢
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
   const search = restaurant_list.results.filter((item) => {
@@ -52,15 +53,33 @@ app.get('/search', (req, res) => {
   res.render('index', { restaurants: search, keyword: keyword })
 })
 
-app.get('/restaurants/:restaurants_id', (req, res) => {
+// 瀏覽詳細資訊
+app.get('/restaurant/:restaurants_id', (req, res) => {
   const id = req.params.restaurants_id
-  const item = restaurant_list.results.find((item) => {
-    return id === item.id.toString()
-  })
-
-  res.render('show', { restaurant: item })
+  return restaurant_list.findById(id)
+    .lean()
+    .then((restaurant) => res.render('show', { restaurant }))
+    .catch(error => console.log(error))
 })
 
+// 編輯
+app.get('/restaurant/:restaurants_id/edit', (req, res) => {
+  const id = req.params.restaurants_id
+  return restaurant_list.findById(id)
+    .lean()
+    .then((restaurant) => res.render('edit', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+app.post('/restaurant/:restaurants_id/edit', (req, res) => {
+  const editItem = req.body
+  const id = req.params.restaurants_id
+  return restaurant_list.findByIdAndUpdate(id, editItem)
+    .then(() => res.redirect(`/restaurant/${id}`))
+    .catch(error => console.log(error))
+})
+
+// 監聽伺服器
 app.listen(port, () => {
   console.log(`http:/localhost:${port}`)
 })
