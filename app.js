@@ -2,27 +2,15 @@ const express = require('express')
 const app = express()
 const expressHandlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
 const port = 3000
 const restaurantList = require('./models/restaurant')
+require('./config/mongoose')
 
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
-
-mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
-
-const db = mongoose.connection
-
-db.on('error', () => {
-  console.log('連線錯誤!!')
-})
-
-db.once('open', () => {
-  console.log('連線成功')
-})
 
 app.get('/', (req, res) => {
   restaurantList.find()

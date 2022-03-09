@@ -1,18 +1,8 @@
-const mongoose = require('mongoose')
+const db = require('../../config/mongoose')
 const Restaurants = require('../restaurant')
 const restaurantList = require('../restaurant.json')
 
-mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
-
-const db = mongoose.connection
-
-db.on('error', () => {
-  console.log('連線錯誤!!')
-})
-
 db.once('open', () => {
-  console.log('連線成功')
-
   restaurantList.results.forEach((item) => {
     Restaurants.create({
       name: item.name,
@@ -26,6 +16,5 @@ db.once('open', () => {
       description: item.description
     })
   })
-
   console.log('種子資料 載入結束')
 })
