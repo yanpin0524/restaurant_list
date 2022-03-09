@@ -3,6 +3,11 @@
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
 
+      <span class="badge bg-danger font-weight-normal mb-2">
+        {{ restaurant.rating }}
+        <i class="fas fa-star fa-xs"></i>
+      </span>
+
       <p class="mb-1">
         <span class="text-secondary">
           <i class="fas fa-utensils pr-2"></i>
@@ -42,7 +47,7 @@
 </div>
 <div class="container-fluid d-flex justify-content-end my-3 fixed-bottom">
   <a class="btn btn-outline-secondary btn-sm me-2" href="/restaurant/{{ restaurant._id }}/edit">編輯</a>
-  <form class="me-3" action="/restaurant/{{ restaurant._id }}/delete" method="post">
+  <form class="me-3" action="/restaurant/{{ restaurant._id }}?_method=DELETE" method="post">
     <button class="btn btn-outline-danger btn-sm" type="submit"><i class="fas fa-trash"></i></button>
   </form>
 </div>

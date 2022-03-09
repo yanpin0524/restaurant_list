@@ -5,7 +5,7 @@
         <div class="card-body">
           <h5 class="card-title">編輯內容<i class="fas fa-edit ms-2"></i></h5>
           <hr>
-          <form method="POST" action="/restaurant/{{ restaurant._id }}/edit">
+          <form method="POST" action="/restaurant/{{ restaurant._id }}?_method=PUT">
 
             <div class="row g-2 mb-3">
               <label for="name" class="col-md-4 col-form-label">
