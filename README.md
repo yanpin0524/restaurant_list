@@ -13,15 +13,21 @@
 
 ![image](https://github.com/yanpin0524/restaurant_list/blob/master/images/005.png)
 
+![image](https://github.com/yanpin0524/restaurant_list/blob/master/images/006.png)
+
+![image](https://github.com/yanpin0524/restaurant_list/blob/master/images/007.png)
+
 ## 產品功能
 
-1. 使用者可以瀏覽全部所有餐廳
+1. 使用者可以瀏覽他的餐廳
 2. 使用者可以瀏覽任一餐廳的詳細資訊，如地址、電話與簡介
 3. 使用者可以點擊餐廳的地址，連結到google地圖
 4. 使用者可以依照餐廳名稱與餐廳類別進行搜尋
 5. 使用者可以新增餐廳
 6. 使用者可以修改一家餐廳的資訊
 7. 使用者可以刪除一家餐廳
+8. 使用者可以註冊及登入帳號
+9. 使用者可以用facebook登入
 
 ## 開發工具
 
@@ -33,6 +39,11 @@
 6. Font Awesome 5.0.9
 7. MongoDB
 8. mongoose 5.9.7
+9. bcryptjs 2.4.3
+10. express-session 1.17.2
+11. passport 0.4.1
+12. connect-flash 0.1.1
+13. dotenv 8.2.0
 
 ## 專案安裝流程
 
@@ -53,11 +64,20 @@ npm run seed
 ```
 npm run start
 ```
-6. 若是跑出 "網站已開啟：http:/localhost:3000" 代表成功，現在可以輸入網址，並開始使用了
+6. 若是跑出 "網站已開啟：http:/localhost:3000" 代表成功，現在可以輸入網址了
 ```
 http:/localhost:3000
 ```
-7. 要結束運行請按下 ctrl + c
+7. 可以用以下模擬帳號登入並開始體驗網站
+```
+帳號 user1@example.com
+密碼 12345678
+```
+```
+帳號 user2@example.com
+密碼 12345678
+```
+8. 要結束運行請按下 ctrl + c
 
 ## 專案開發人員
 > [yanpin0524](https://github.com/yanpin0524)
