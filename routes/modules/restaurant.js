@@ -9,7 +9,9 @@ router.get('/add', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+  const userId = req.user._id
   const addItems = req.body
+  addItems.userId = userId
   return Restaurant.create(addItems)
     .then(() => res.redirect('/'))
     .catch((error) => console.log(error))
@@ -17,8 +19,9 @@ router.post('/', (req, res) => {
 
 // 瀏覽詳細資訊
 router.get('/:restaurants_id', (req, res) => {
-  const id = req.params.restaurants_id
-  return Restaurant.findById(id)
+  const userId = req.user._id
+  const _id = req.params.restaurants_id
+  return Restaurant.findOne({ userId, _id })
     .lean()
     .then((restaurant) => res.render('show', { restaurant }))
     .catch((error) => console.log(error))
@@ -26,8 +29,9 @@ router.get('/:restaurants_id', (req, res) => {
 
 // 編輯餐廳內容
 router.get('/:restaurants_id/edit', (req, res) => {
-  const id = req.params.restaurants_id
-  return Restaurant.findById(id)
+  const userId = req.user._id
+  const _id = req.params.restaurants_id
+  return Restaurant.findOne({ userId, _id })
     .lean()
     .then((restaurant) => res.render('edit', { restaurant }))
     .catch((error) => console.log(error))
@@ -35,16 +39,19 @@ router.get('/:restaurants_id/edit', (req, res) => {
 
 router.put('/:restaurants_id', (req, res) => {
   const editItem = req.body
-  const id = req.params.restaurants_id
-  return Restaurant.findByIdAndUpdate(id, editItem)
-    .then(() => res.redirect(`/restaurant/${id}`))
+  const userId = req.user._id
+  editItem.userId = userId
+  const _id = req.params.restaurants_id
+  return Restaurant.findOneAndUpdate({ userId, _id }, editItem)
+    .then(() => res.redirect(`/restaurant/${_id}`))
     .catch((error) => console.log(error))
 })
 
 // 刪除餐廳
 router.delete('/:restaurants_id', (req, res) => {
-  const id = req.params.restaurants_id
-  return Restaurant.findByIdAndDelete(id)
+  const userId = req.user._id
+  const _id = req.params.restaurants_id
+  return Restaurant.findOneAndDelete({ userId, _id })
     .then(() => res.redirect('/'))
     .catch((error) => console.log(error))
 })
