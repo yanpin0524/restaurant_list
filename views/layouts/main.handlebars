@@ -22,10 +22,17 @@
     <!-- navigation -->
     <nav class="navbar navbar-light bg-light fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand d-flex align-items-center" href="/">
           <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
-            width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
-          {{#if isAuthenticated}}{{ user.name}}的{{/if}}餐廳清單
+            width="30" height="30" class="d-inline-block align-top me-2" alt="我的餐廳清單">
+          {{#if isAuthenticated}}
+          {{#if user.name }}{{ user.name }}的餐廳清單
+          {{else}}
+          我的餐廳清單
+          {{/if}}
+          {{else}}
+          餐廳清單
+          {{/if}}
         </a>
         {{#if isAuthenticated}}
         <a href="/users/logout" class="btn rounded-pill text-light" style="background-color: #459BC6;">登出</a>
